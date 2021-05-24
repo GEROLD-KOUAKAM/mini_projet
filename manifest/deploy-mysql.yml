@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - image: mysql
+        name: mysql
+        volumeMounts:
+        - name: mysql-wordpress
+          mountPath: /var/lib/mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        - name: MYSQL_DATABASE
+          value: wp_db
+        - name: MYSQL_USER
+          value: gerold
+        - name: MYSQL_PASSWORD
+          value: gerold
+        ports:
+        - containerPort: 3306
+          name: mysql
+      volumes:
+      - name: mysql-wordpress
+
+
