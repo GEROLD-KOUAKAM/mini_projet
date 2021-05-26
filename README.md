@@ -1,5 +1,6 @@
-# Mini_Projet Wordpress Kubernetes
+# Mini_Projet consistant à déployer une application wordpress sur minikube
 
+                                    
 
 - Creation d'un deploiement MySQL avec un 1 réplicat
 - Creation d'un service de type clusterIP pour exposer le pod à  l'intérieur du cluster
