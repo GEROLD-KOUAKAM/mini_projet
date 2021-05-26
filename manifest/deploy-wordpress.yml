@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
-  labels:
-    app: wordpress
 spec:
   selector:
     matchLabels:
@@ -18,7 +16,7 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: mysql
+          value: mysql-service
         - name: WORDPRESS_DB_NAME
           value: wp_db
         - name:  WORDPRESS_DB_USER
@@ -29,13 +27,8 @@ spec:
         - containerPort: 80
           name: wordpress
         volumeMounts:
-        - name: data
+        - name: data-wp
           mountPath: /var/www/html
       volumes:
-      - name: data
-        hostPath:
-          # chemin du dossier sur l hote
-          path: /data
-          # ce champ est optionel
-          type: Directory
+      - name: data-wp
 
