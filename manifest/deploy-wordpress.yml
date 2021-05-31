@@ -31,4 +31,8 @@ spec:
           mountPath: /var/www/html
       volumes:
       - name: data-wp
-
+        hostPath:
+          # chemin du dossier sur l hote
+          path: /data
+          # ce champ est optionel
+          type: Directory
